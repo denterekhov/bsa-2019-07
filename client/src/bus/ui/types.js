@@ -1,0 +1,4 @@
+export const types = {//TODO
+  START_FETCHING: 'START_FETCHING',
+  STOP_FETCHING: 'STOP_FETCHING',
+}

@@ -1,0 +1,9 @@
+.user_card {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 20px auto;
+  width: 100%;
+  min-width: 400px;
+  padding: 15px;
+  text-align: center;
+}

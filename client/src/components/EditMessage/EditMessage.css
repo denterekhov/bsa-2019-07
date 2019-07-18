@@ -1,0 +1,16 @@
+.MuiPaper-root {
+  min-width: 400px;
+  width: 30%;
+}
+
+.MuiDialog-paper {
+  overflow: hidden;
+}
+
+.edit_message_textarea {
+  width: 80%;
+}
+
+textarea::scrollbar {
+  display: none;
+}
