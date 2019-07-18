@@ -1,15 +1,19 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import './Spinner.css';
 
-const Spinner = () => {
-  return (
-    <CircularProgress
-      className='spinner'
-      size={60}
-      thickness={4}
-    />
-  )
+const Spinner = (props) => {
+  return props.isFetching 
+    ? <CircularProgress
+        className='spinner'
+        size={40}
+        thickness={4}/> 
+    : null;
 }
 
-export { Spinner };
+const mapStateToProps = (state) => ({
+  isFetching: state.ui.isFetching,
+})
+
+export default connect(mapStateToProps)(Spinner);

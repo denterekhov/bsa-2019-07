@@ -49,6 +49,12 @@ export const messagesReducer = (state = initialState, action) => {
         )
       }
       
+    case types.SET_EDITING_MESSAGE_ID:
+      return {
+        ...state,
+        editingMessageId: action.payload,
+      }
+      
     default:
       return state;
   }

@@ -4,7 +4,6 @@ import Avatar from '@material-ui/core/Avatar';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import { Delete, ThumbUp, Settings } from '@material-ui/icons';
-import { Link } from 'react-router-dom';
 
 import { func, shape, bool, string } from 'prop-types';
 import './Message.css';
@@ -19,7 +18,7 @@ const IconTooltip = withStyles(theme => ({
   },
 }))(Tooltip);
 
-const Message = ({ post, toggleMessageLike, deleteMessageAsync, setEditingMessageId }) => {
+const Message = ({ post, history, toggleMessageLike, deleteMessageAsync, setEditingMessageId }) => {
   const { id, avatar, created_at, message, user, isLiked } = post;
 
   const thumbUpIconColor = isLiked ? '#f00' : '#000';
@@ -27,6 +26,7 @@ const Message = ({ post, toggleMessageLike, deleteMessageAsync, setEditingMessag
 
   const handleEditMessage = () => {
     setEditingMessageId(id);
+    history.push('/edit_message');
   }
 
   const createDeleteIcon = () => user === 'Den' 
@@ -49,11 +49,9 @@ const Message = ({ post, toggleMessageLike, deleteMessageAsync, setEditingMessag
         placement="top"
         interactive={true}
         title={
-          <Link to = {`/edit_message/:${id}`}>
-            <Settings
-              // onClick={handleEditMessage}
-            />
-          </Link>
+          <Settings
+            onClick={handleEditMessage}
+          />
         }>
         <Card 
           className='card'

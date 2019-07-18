@@ -8,8 +8,8 @@
 }
 
 .edit_message_textarea {
-  width: 80%;
-}
+  width: 100%;
+} 
 
 textarea::scrollbar {
   display: none;

@@ -1,19 +1,24 @@
 import React, { Fragment } from 'react';
 import Divider from '@material-ui/core/Divider';
-import { Message } from '../Message';
+import { Message } from '../Message/Message';
 import { array, func } from 'prop-types';
 
-const MessageList = ({ messages, deleteMessageAsync, toggleMessageLike, setEditingMessageId }) => {
+const MessageList = ({ messages, history, deleteMessageAsync, toggleMessageLike, setEditingMessageId }) => {
   const createMessageList = () => {
     return messages.map(( post, ind) => {
       const card = <Message 
         key={post.id}
         post={post}
+        history={history}
         toggleMessageLike={toggleMessageLike}
         deleteMessageAsync={deleteMessageAsync}
         setEditingMessageId={setEditingMessageId}/>;
 
-      if(messages[ind + 1] && (new Date(messages[ind + 1].created_at)).getDate() - (new Date(messages[ind].created_at)).getDate()) {
+      const nextMessage = messages[ind + 1];
+      const nextDay = nextMessage && new Date(messages[ind + 1].created_at);
+      const previousDay = new Date(messages[ind].created_at);
+
+      if(nextMessage && nextDay.getDate() - previousDay.getDate()) {
 
         return (
           <Fragment key={post.id}>

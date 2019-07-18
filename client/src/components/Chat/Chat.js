@@ -5,10 +5,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import { array, string } from 'prop-types';
 
-import { Header } from '../Header';
-import { MessageList } from '../MessageList';
-import { MessageInput } from '../MessageInput';
-import { Spinner } from '../Spinner/Spinner';
+import { Header } from '../Header/Header';
+import { MessageList } from '../MessageList/MessageList';
+import { MessageInput } from '../MessageInput/MessageInput';
+import Spinner from '../Spinner/Spinner';
 
 import { messagesActions } from '../../bus/messages/actions';
 
@@ -24,7 +24,7 @@ class Chat extends Component {
   }
   
   render() {
-    const { messages, actions } = this.props;
+    const { messages, history, actions } = this.props;
     const usersQuantity = (new Set(messages.map(({user}) => user))).size;
     const lastMessageTime = messages.length && messages[messages.length - 1].created_at;
 
@@ -32,6 +32,7 @@ class Chat extends Component {
       <>
         {messages.length 
           ? <>
+              <Spinner/>
               <Header 
                 messageQuantity={messages.length}
                 usersQuantity={usersQuantity}
@@ -41,6 +42,7 @@ class Chat extends Component {
               <Container maxWidth="md">
                 <MessageList 
                   messages={messages}
+                  history={history}
                   toggleMessageLike={actions.toggleMessageLike}
                   deleteMessageAsync={actions.deleteMessageAsync}
                   setEditingMessageId={actions.setEditingMessageId}
@@ -50,7 +52,7 @@ class Chat extends Component {
                 />
               </Container>
           </>
-          : <Spinner />
+          : null
         }
       </>
     )

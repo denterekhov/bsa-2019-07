@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import Login from '../components/Login';//TODO
+import Login from '../components/Login/Login';
 
 const Public = () => {
     return (

@@ -60,7 +60,6 @@ const UserEditor = (props) => {
     history.push('/user_list');
   }
 
-
   return ( 
     <Container maxWidth="sm">
       <form onSubmit={createOrUpdateUser}>
@@ -99,12 +98,10 @@ const UserEditor = (props) => {
   )
 }
 
-const mapStateToProps = (state) => {
-  return {
-    users: state.users.userList,
-    editingUserId: state.users.editingUserId,
-  }
-}
+const mapStateToProps = (state) => ({
+  users: state.users.userList,
+  editingUserId: state.users.editingUserId,
+})
 
 const mapDispatchToProps = (dispatch) => {
   return {

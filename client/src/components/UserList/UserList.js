@@ -7,6 +7,7 @@ import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
 import { userActions } from '../../bus/users/actions';
 import { makeStyles } from '@material-ui/core/styles';
+import Spinner from '../Spinner/Spinner';
 
 import './UserList.css';
 
@@ -34,6 +35,7 @@ const UserList = (props) => {
 
   return (
     <>
+      <Spinner/>
       <CssBaseline/>
       <Container maxWidth="md">
         <Button variant="contained" color="primary" className={classes.button} onClick={handleCreateUser}>
@@ -55,7 +57,6 @@ const UserList = (props) => {
     </>
   )
 }
-
 
 const mapStateToProps = (state) => {
   return {

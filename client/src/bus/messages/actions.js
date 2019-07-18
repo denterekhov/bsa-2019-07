@@ -40,6 +40,11 @@ export const messagesActions = {
     payload: id,
   }),
 
+  setEditingMessageId: (id) => ({
+    type:    types.SET_EDITING_MESSAGE_ID,
+    payload: id,
+  }),
+
   toggleMessageLike: (id) => ({
     type:    types.TOGGLE_MESSAGE_LIKE,
     payload: id,
